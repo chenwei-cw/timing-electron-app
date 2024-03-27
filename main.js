@@ -14,7 +14,7 @@ function createWindow () {
   // 窗口置顶
   win.setAlwaysOnTop(true);
   // 打开开发工具
-  // mainWindow.webContents.openDevTools()
+  // win.webContents.openDevTools()
   // 获取屏幕的分辨率大小
   const screenSize = screen.getPrimaryDisplay().workAreaSize;
   // 计算窗口的位置，使其出现在屏幕的右上角

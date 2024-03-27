@@ -47,13 +47,16 @@ goOn.addEventListener('click',()=>{
 });
 
 function timeTranFunc(timeNum){
-    let hour = Math.floor(timeNum/60);
-    let minute = timeNum%60;
+    let second = timeNum%60;
+    let minute = Math.floor(timeNum/60);
+    let hour = Math.floor(minute/60);
+        minute = minute%60;
 
     if(hour < 10) hour = '0'+String(hour)
     if(minute < 10) minute = '0'+String(minute)
+    if(second < 10) second = '0'+String(second)
 
-    timeDom.innerHTML =hour+':'+minute;
+    timeDom.innerHTML =hour+':'+minute+'<span class="secondStyle">:'+second+'</span>';
 }
 function timeIntervalFunc(){
     timeInterval = setInterval(()=>{
