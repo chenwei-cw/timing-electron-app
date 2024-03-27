@@ -1,0 +1,88 @@
+let timeDom = document.getElementById('time');
+let start = document.getElementById('start');
+let pause = document.getElementById('pause');
+let end = document.getElementById('end');
+let goOn = document.getElementById('goOn');
+
+let timeNum = 0;
+let timeInterval = null;
+
+//时间转换成合适的格式
+timeTranFunc(timeNum);
+
+start.addEventListener('click',()=>{
+    if(timeInterval) return;
+    //开始时间计时
+    timeIntervalFunc();
+    //隐藏开始按钮，显示暂停和结束按钮
+    timingStatus('start');
+});
+
+end.addEventListener('click',()=>{
+    if(timeInterval) {
+        clearInterval(timeInterval);
+        timeInterval = null;
+        timeNum = 0;
+        timeTranFunc(timeNum);
+        timingStatus('end');
+    }else{
+        timeNum = 0;
+        timeTranFunc(timeNum);
+        timingStatus('end');
+    }
+});
+
+pause.addEventListener('click',()=>{
+    if(timeInterval) {
+        clearInterval(timeInterval);
+        timeInterval = null;
+        timingStatus('pause');
+    }
+});
+
+goOn.addEventListener('click',()=>{
+     //开始时间计时
+     timeIntervalFunc();
+     timingStatus('goOn');
+});
+
+function timeTranFunc(timeNum){
+    let hour = Math.floor(timeNum/60);
+    let minute = timeNum%60;
+
+    if(hour < 10) hour = '0'+String(hour)
+    if(minute < 10) minute = '0'+String(minute)
+
+    timeDom.innerHTML =hour+':'+minute;
+}
+function timeIntervalFunc(){
+    timeInterval = setInterval(()=>{
+        timeNum = timeNum+ 1;
+        timeTranFunc(timeNum)
+    },1000)
+}
+function timingStatus(bool){
+    if(bool === 'start'){
+        start.style.display = 'none';
+        pause.style.display = 'inline-block';
+        end.style.display = 'inline-block';
+        timeDom.style.color = 'rgba(0,0,0,0.9)'
+    }else if(bool === 'end'){
+        start.style.display = 'inline-block';
+        pause.style.display = 'none';
+        end.style.display = 'none';
+        goOn.style.display = 'none';
+        timeDom.style.color = 'rgba(0,0,0,0.6)'
+    }else if(bool === 'pause'){
+        start.style.display = 'none';
+        pause.style.display = 'none';
+        end.style.display = 'inline-block';
+        goOn.style.display = 'inline-block';
+        timeDom.style.color = 'rgba(0,0,0,0.6)'
+    }else if(bool === 'goOn'){
+        goOn.style.display = 'none';
+        pause.style.display = 'inline-block';
+        end.style.display = 'inline-block';
+        timeDom.style.color = 'rgba(0,0,0,0.9)'
+    }
+}

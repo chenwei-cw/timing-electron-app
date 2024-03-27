@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>计时器</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <!-- <link href="./index.css" rel="stylesheet"> -->
+    <style>
+        .time{
+            font-size: 40px;
+            font-weight: 500;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.6);
+        }
+        .bottomBtnList{
+            text-align: center;
+        }
+        .btn{
+            display: inline-block;
+            padding: 8px 30px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #4096ff;
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+        .btnPause,.btnEnd,.btnGoOn{
+            display: none;
+        }
+        .btnPause{
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div id="time" class="time">00:00</div>
+    <div class="bottomBtnList">
+        <span id="start" class="btn">开始</span>
+        <span id="goOn" class="btn btnGoOn">继续</span>
+        <span id="pause" class="btn btnPause">暂停</span>
+        <span id="end" class="btn btnEnd">结束</span>
+    </div>
+    
+    <script src="./renderer.js"></script>
+</body>
+</html>
