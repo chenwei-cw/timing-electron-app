@@ -11,6 +11,8 @@ let timeInterval = null;
 timeTranFunc(timeNum);
 
 start.addEventListener('click',()=>{
+    // 通知
+//   new Notification('标题',{  body: '内容' }).show()
     if(timeInterval) return;
     //开始时间计时
     timeIntervalFunc();
