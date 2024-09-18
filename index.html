@@ -6,6 +6,10 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <!-- <link href="./index.css" rel="stylesheet"> -->
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         .time{
             font-size: 40px;
             font-weight: 500;
@@ -35,9 +39,36 @@
             width:30px;
             font-size:20px;
         }
+        .titlebar{
+            display: flex;
+            width: 100%;
+            height: 21px;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .titlebar .closeBtn{
+            margin-left: 10px;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            border-radius: 50%;
+            color: transparent;
+            background-color: rgba(0, 0, 0, 0.2);
+            font-size: 9px;
+            text-align: center;
+            cursor: default;
+        }
+        .titlebar .closeBtn:hover{
+            background-color: rgb(252, 72, 72);
+            color: rgba(0, 0, 0, 1);
+        }
     </style>
 </head>
 <body>
+    <div id="titlebar" class="titlebar">
+        <span id="closeBtn" class="closeBtn">X</span>
+    </div>
     <div id="time" class="time">00:00</div>
     <div class="bottomBtnList">
         <span id="start" class="btn">开始</span>

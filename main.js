@@ -3,22 +3,25 @@ const path = require('node:path')
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 250,
-    height: 150,
+    width: 800,
+    height: 600,
+    // width: 250,
+    // height: 150,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
-    }
+    },
+    frame: false //表示不使用默认标题栏
   })
 
   win.loadFile('index.html')
   // 窗口置顶
-  win.setAlwaysOnTop(true);
+  // win.setAlwaysOnTop(true);
   // 打开开发工具
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
   // 获取屏幕的分辨率大小
-  const screenSize = screen.getPrimaryDisplay().workAreaSize;
+  // const screenSize = screen.getPrimaryDisplay().workAreaSize;
   // 计算窗口的位置，使其出现在屏幕的右上角
-  win.setPosition(screenSize.width - 250, 70);
+  // win.setPosition(screenSize.width - 250, 70);
 }
 
 app.whenReady().then(() => {
